@@ -2,8 +2,8 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List
 from uuid import UUID
-from .. import models, schemas, database
-from ..database import get_db
+import models, schemas, database
+from database import get_db
 
 router = APIRouter(prefix="/qrs", tags=["qrs"])
 
