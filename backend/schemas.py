@@ -2,11 +2,11 @@ from pydantic import BaseModel, EmailStr
 from typing import Optional, List
 from datetime import datetime
 from uuid import UUID
-from .models import QRType, VisitorStatus, Role
+import models
 
 class AdminBase(BaseModel):
     email: EmailStr
-    role: Role
+    role: models.Role
 
 class AdminCreate(AdminBase):
     password: str
@@ -24,7 +24,7 @@ class TokenData(BaseModel):
     email: Optional[str] = None
 
 class QRCodeBase(BaseModel):
-    type: QRType
+    type: models.QRType
     label: str
     url: str
     is_active: bool = True
@@ -51,7 +51,7 @@ class VisitorCreate(VisitorBase):
 class Visitor(VisitorBase):
     id: UUID
     entry_time: datetime
-    status: VisitorStatus
+    status: models.VisitorStatus
     class Config:
         from_attributes = True
 
